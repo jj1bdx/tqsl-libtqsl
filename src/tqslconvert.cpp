@@ -293,6 +293,8 @@ static tqsl_adifFieldDefinitions adif_qso_record_fields[] = {
 	{ "OWNER_CALLSIGN", "", TQSL_ADIF_RANGE_TYPE_NONE, TQSL_CALLSIGN_MAX, 0, 0, NULL },
 #endif
 	{ "eor", "", TQSL_ADIF_RANGE_TYPE_NONE, 0, 0, 0, NULL },
+	// This is required to tell tqsl_adifGetField() about the end of the fields.
+	{ "", "", TQSL_ADIF_RANGE_TYPE_NONE, 0, 0, 0, NULL },
 };
 
 DLLEXPORT int CALLCONVENTION
