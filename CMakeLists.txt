@@ -93,4 +93,17 @@ else()
 	set(TQSLVERSION "${TQSL_VERSION_MAJOR}.${TQSL_VERSION_MINOR}")
 endif()
 #
+# Use conservative options when failed to run
+set(OPTIMIZATION_FLAGS "-O2")
+##
+# For Sanitizers
+# with Thread Sanitizer
+#set(OPTIMIZATION_FLAGS "-fsanitize=thread -g -O2")
+# with Address Sanitizer
+#set(OPTIMIZATION_FLAGS "-fsanitize=address -g -O2")
+# For valgrind check
+#set(OPTIMIZATION_FLAGS "-g")
+#
+set(CMAKE_CXX_FLAGS "-Wall -fstack-protector-strong ${OPTIMIZATION_FLAGS}")
+#
 add_subdirectory(src) # build tqsllib ONLY
