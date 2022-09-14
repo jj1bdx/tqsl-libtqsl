@@ -50,8 +50,8 @@ using std::string;
 DLLEXPORTDATA int tQSL_Error = 0;
 DLLEXPORTDATA int tQSL_Errno = 0;
 DLLEXPORTDATA TQSL_ADIF_GET_FIELD_ERROR tQSL_ADIF_Error;
-DLLEXPORTDATA const char *tQSL_BaseDir = 0;
-DLLEXPORTDATA const char *tQSL_RsrcDir = 0;
+DLLEXPORTDATA const char *tQSL_BaseDir = NULL;
+DLLEXPORTDATA const char *tQSL_RsrcDir = NULL;
 DLLEXPORTDATA char tQSL_ErrorFile[TQSL_MAX_PATH_LEN];
 DLLEXPORTDATA char tQSL_CustomError[256];
 DLLEXPORTDATA char tQSL_ImportCall[256];
@@ -424,6 +424,11 @@ tqsl_init() {
 		fclose(test);
 		unlink(path);
 #endif
+	}
+        // This is a hack NOT to leave tQSL_RsrcDir as NULL,
+	// which causes a crash on tqsl_load_xml_config().
+ 	if (tQSL_RsrcDir == NULL) {
+		tQSL_RsrcDir = tQSL_BaseDir;
 	}
 	semaphore = 1;
 	return 0;
