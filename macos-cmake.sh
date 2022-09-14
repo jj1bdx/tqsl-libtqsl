@@ -17,5 +17,4 @@ cmake  \
     -DCMAKE_C_FLAGS="${buildflags}" \
     -DCMAKE_EXE_LINKER_FLAGS=${linkerflags} \
     -DOSX_ARCH="${arch}" \
-    -DOSX_PLATFORM="${arch}" \
     .
