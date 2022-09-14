@@ -84,7 +84,8 @@ main(int argc, char *argv[]) {
 			if (tqsl_beginADIFConverter(&conv, argv[optind], certs, ncerts, loc))
 				throw tqslexc();
 		}
-		tqsl_setConverterAllowDuplicates(conv, false);
+		// Always allow duplicate
+		tqsl_setConverterAllowDuplicates(conv, true);
 		optind++;
 		const char *ofile = (optind < argc) ? argv[optind] : "converted.tq7";
 		ofstream out;
