@@ -294,7 +294,11 @@ static tqsl_adifFieldDefinitions adif_qso_record_fields[] = {
 #endif
 	{ "eor", "", TQSL_ADIF_RANGE_TYPE_NONE, 0, 0, 0, NULL },
 	// This is required to tell tqsl_adifGetField() about the end of the fields.
-	{ "", "", TQSL_ADIF_RANGE_TYPE_NONE, 0, 0, 0, NULL },
+	// JJ1BDX originally suggested this:
+	// { "", "", TQSL_ADIF_RANGE_TYPE_NONE, 0, 0, 0, NULL },
+	// K1MU suggested the following structure.
+	// Used double brackets for suppressing clang warnings.
+	{{ (char)NULL, (char)NULL, TQSL_ADIF_RANGE_TYPE_NONE, 0, 0, 0, (char)NULL }},
 };
 
 DLLEXPORT int CALLCONVENTION
